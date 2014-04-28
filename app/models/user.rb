@@ -1,6 +1,13 @@
 class User < ActiveRecord::Base
-  has_many :friend_circle_memberships, dependent: :destroy
-  has_many :friend_circles, through: :friend_circle_memberships, inverse_of: :users
+  has_many :friend_circle_memberships,
+           foreign_key: :member_id,
+           dependent: :destroy
+
+  has_many :associated_circles,
+           through: :friend_circle_memberships,
+           source: :member
+
+  has_many :owned_circles, foreign_key: :owner_id, class_name: 'FriendCircle'
 
   attr_reader :password
 
@@ -16,6 +23,17 @@ class User < ActiveRecord::Base
     self.password_digest = generate_password_digest( password )
   end
 
+  def is_password?( password )
+    BCrypt::Password.new(self.password_digest).is_password?(password)
+  end
+
+  def reset_session_token!
+    self.session_token = generate_session_token
+    self.save!
+    self.session_token
+  end
+
+
   private
 
   def ensure_session_token
@@ -27,6 +45,6 @@ class User < ActiveRecord::Base
   end
 
   def generate_password_digest( password )
-    BCrypt::Pasword.create( password )
+    BCrypt::Password.create( password )
   end
 end

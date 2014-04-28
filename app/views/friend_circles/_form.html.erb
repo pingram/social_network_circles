@@ -1,5 +1,10 @@
-<% form_for( friend_circle ) do |f| %>
-  <%= f.label :name %>
-	<%= f.text_field :name %>
+<%= form_for( friend_circle ) do |f| %>
+  <%= f.label :name %><br>
+	<%= f.text_field :name %><br><br>
+	<%= f.label 'Users' %><br>
+	<%= collection_check_boxes :friend_circle, :member_ids,
+							               users, :id, :email %><br><br>
+
+
 	<%= f.submit 'Create Friend Circle' %>
 <% end %>

@@ -41,6 +41,7 @@ group :development do
 end
 # Use unicorn as the app server
 # gem 'unicorn'
+gem 'faker'
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development

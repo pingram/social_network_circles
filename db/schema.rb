@@ -17,20 +17,23 @@ ActiveRecord::Schema.define(version: 20140428174852) do
   enable_extension "plpgsql"
 
   create_table "friend_circle_memberships", force: true do |t|
-    t.integer  "user_id"
+    t.integer  "member_id"
     t.integer  "friend_circle_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "friend_circle_memberships", ["friend_circle_id"], name: "index_friend_circle_memberships_on_friend_circle_id", using: :btree
-  add_index "friend_circle_memberships", ["user_id"], name: "index_friend_circle_memberships_on_user_id", using: :btree
+  add_index "friend_circle_memberships", ["member_id"], name: "index_friend_circle_memberships_on_member_id", using: :btree
 
   create_table "friend_circles", force: true do |t|
     t.string   "name"
+    t.integer  "owner_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "friend_circles", ["owner_id"], name: "index_friend_circles_on_owner_id", using: :btree
 
   create_table "links", force: true do |t|
     t.integer  "post_id"
