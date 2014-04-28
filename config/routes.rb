@@ -1,4 +1,22 @@
 AaPlus::Application.routes.draw do
+  get "friend_circles/new"
+  get "friend_circles/create"
+  get "friend_circles/edit"
+  get "friend_circles/update"
+  get "friend_circles/index"
+  get "friend_circles/show"
+  get "friend_circles/destroy"
+  get "links/new"
+  get "links/create"
+  get "posts/new"
+  get "posts/create"
+  get "posts/edit"
+  get "posts/update"
+  get "posts/destroy"
+  get "posts/index"
+  get "posts/show"
+  get "users/new"
+  get "users/create"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

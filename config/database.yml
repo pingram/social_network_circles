@@ -19,4 +19,4 @@ development:
   encoding: unicode
   database: aa_plus_development
   pool: 5
-	host: localhost
+  host: localhost
