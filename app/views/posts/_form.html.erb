@@ -1,0 +1,10 @@
+<%= form_for( post ) do |f| %>
+  <%= f.label :body %><br>
+	<%= f.text_field :body %><br><br>
+	<%= f.label 'Friend Circles' %><br>
+	<%= collection_check_boxes :post, :friend_circle_ids,
+							               friend_circles, :id, :name %><br><br>
+
+
+	<%= f.submit 'Create Post' %>
+<% end %>

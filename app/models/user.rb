@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
            source: :member
 
   has_many :owned_circles, foreign_key: :owner_id, class_name: 'FriendCircle'
+  has_many :posts
 
   attr_reader :password
 
