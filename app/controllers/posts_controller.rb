@@ -30,6 +30,7 @@ class PostsController < ApplicationController
   end
 
   def index
+    @posts = current_user.shared_posts
   end
 
   def show

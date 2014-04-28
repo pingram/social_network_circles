@@ -5,6 +5,8 @@ class FriendCircle < ActiveRecord::Base
            through: :friend_circle_memberships,
            source: :member
 
+ has_many :shared_posts, class_name: 'PostShare'
+
   validates :name, presence: true
   validates :name, uniqueness: { scope: :owner_id }
   validates :owner_id, presence: true

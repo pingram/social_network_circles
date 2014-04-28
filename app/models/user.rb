@@ -5,7 +5,9 @@ class User < ActiveRecord::Base
 
   has_many :associated_circles,
            through: :friend_circle_memberships,
-           source: :member
+           source: :friend_circle
+
+  has_many :shared_posts, through: :associated_circles, source: :shared_posts
 
   has_many :owned_circles, foreign_key: :owner_id, class_name: 'FriendCircle'
   has_many :posts

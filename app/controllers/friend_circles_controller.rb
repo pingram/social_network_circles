@@ -18,9 +18,20 @@ class FriendCirclesController < ApplicationController
   end
 
   def edit
+    set_users
+    @friend_circle = FriendCircle.find(params[:id])
   end
 
   def update
+    set_users
+    @friend_circle = FriendCircle.find(params[:id])
+
+    if @friend_circle.update_attributes(friend_circle_params)
+      redirect_to posts_url
+    else
+      flash.now[:errors] = @friend_circle.errors.full_messages
+      render :new
+    end
   end
 
   def index
