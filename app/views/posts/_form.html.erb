@@ -5,6 +5,23 @@
 	<%= collection_check_boxes :post, :friend_circle_ids,
 							               friend_circles, :id, :name %><br><br>
 
+	<% post.links.each_with_index do |link, idx| %>
+		<label>
+			Title
+			<input type="text"
+				name="links[<%= idx %>][title]"
+				value="<%= link.title %>">
+		</label>
 
+		<label>
+			URL
+			<input type="text"
+				name="links[<%= idx %>][url]"
+				value="<%= link.url %>">
+		</label><br>
+
+	<% end %>
+
+  <br>
 	<%= f.submit 'Create Post' %>
 <% end %>
