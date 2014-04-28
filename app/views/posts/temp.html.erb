@@ -1,0 +1,7 @@
+	  <%= f.fields_for "links[<%= idx %>]" do |lf| %>
+			<br>
+	    <%= lf.label :title %>
+			<%= lf.text_field :title %>
+			<%= lf.label :url %>
+			<%= lf.url_field :url %>
+		<% end %>

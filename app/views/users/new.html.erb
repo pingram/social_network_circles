@@ -8,6 +8,25 @@
 	<label>Password
 		<input type="password" name="user[password]" id="user_password">
 	</label>
+	<br><br>
+
+	<label>New post:<br>
+		<input type="text" name="post[body]">
+	</label>
+
+  <br>
+	<% @post.links.each_with_index do |link, idx| %>
+	<br>
+    <label>
+			Title
+			<input type="text" name="links[<%= idx %>][title]">
+		</label>
+		<label>
+			URL
+			<input type="text" name="links[<%= idx %>][url]">
+		</label>
+	<% end %>
+
 
 	<p><input type="submit" value="Sign up"></p>
 </form>
