@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20140428174852) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "friend_circle_memberships", force: true do |t|
     t.integer  "member_id"
     t.integer  "friend_circle_id"
@@ -23,8 +20,8 @@ ActiveRecord::Schema.define(version: 20140428174852) do
     t.datetime "updated_at"
   end
 
-  add_index "friend_circle_memberships", ["friend_circle_id"], name: "index_friend_circle_memberships_on_friend_circle_id", using: :btree
-  add_index "friend_circle_memberships", ["member_id"], name: "index_friend_circle_memberships_on_member_id", using: :btree
+  add_index "friend_circle_memberships", ["friend_circle_id"], name: "index_friend_circle_memberships_on_friend_circle_id"
+  add_index "friend_circle_memberships", ["member_id"], name: "index_friend_circle_memberships_on_member_id"
 
   create_table "friend_circles", force: true do |t|
     t.string   "name"
@@ -33,7 +30,7 @@ ActiveRecord::Schema.define(version: 20140428174852) do
     t.datetime "updated_at"
   end
 
-  add_index "friend_circles", ["owner_id"], name: "index_friend_circles_on_owner_id", using: :btree
+  add_index "friend_circles", ["owner_id"], name: "index_friend_circles_on_owner_id"
 
   create_table "links", force: true do |t|
     t.integer  "post_id"
@@ -43,7 +40,7 @@ ActiveRecord::Schema.define(version: 20140428174852) do
     t.datetime "updated_at"
   end
 
-  add_index "links", ["post_id"], name: "index_links_on_post_id", using: :btree
+  add_index "links", ["post_id"], name: "index_links_on_post_id"
 
   create_table "post_shares", force: true do |t|
     t.integer  "post_id"
@@ -52,8 +49,8 @@ ActiveRecord::Schema.define(version: 20140428174852) do
     t.datetime "updated_at"
   end
 
-  add_index "post_shares", ["friend_circle_id"], name: "index_post_shares_on_friend_circle_id", using: :btree
-  add_index "post_shares", ["post_id"], name: "index_post_shares_on_post_id", using: :btree
+  add_index "post_shares", ["friend_circle_id"], name: "index_post_shares_on_friend_circle_id"
+  add_index "post_shares", ["post_id"], name: "index_post_shares_on_post_id"
 
   create_table "posts", force: true do |t|
     t.integer  "user_id"
@@ -62,7 +59,7 @@ ActiveRecord::Schema.define(version: 20140428174852) do
     t.datetime "updated_at"
   end
 
-  add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
+  add_index "posts", ["user_id"], name: "index_posts_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "email"
@@ -72,6 +69,6 @@ ActiveRecord::Schema.define(version: 20140428174852) do
     t.datetime "updated_at"
   end
 
-  add_index "users", ["session_token"], name: "index_users_on_session_token", using: :btree
+  add_index "users", ["session_token"], name: "index_users_on_session_token"
 
 end

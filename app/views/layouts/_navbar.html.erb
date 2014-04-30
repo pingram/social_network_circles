@@ -1,0 +1,8 @@
+<%= nav_bar :fixed => :top, :brand => "App Academy+" do %>
+    <%= menu_group do %>
+        <%= menu_item "Home", root_path %>
+        <% if current_user %>
+            <%= menu_item "Log Out", session_url, method: :delete %>
+        <% end %>
+    <% end %>
+<% end %>

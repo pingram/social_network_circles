@@ -1,4 +1,6 @@
 class FriendCirclesController < ApplicationController
+  before_action :ensure_signed_in
+
   def new
     set_users
     @friend_circle = FriendCircle.new

@@ -1,7 +1,9 @@
 AaPlus::Application.routes.draw do
+  root to: 'posts#index'
+  get 'feed'    => 'posts#index',  as: 'feed'
+
   get 'sign_up' => 'users#new',    as: 'sign_up'
   get 'sign_in' => 'sessions#new', as: 'sign_in'
-  get 'feed'    => 'posts#index',  as: 'feed'
 
   resources :users do
     resources :posts

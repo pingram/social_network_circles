@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :ensure_signed_in
+
   def new
     set_friend_circles
     @post = Post.new
@@ -31,6 +33,9 @@ class PostsController < ApplicationController
 
   def index
     @posts = current_user.shared_posts
+    unless current_user.posts.nil?
+      @posts = @posts + current_user.posts
+    end
   end
 
   def show
