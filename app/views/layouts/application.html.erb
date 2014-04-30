@@ -8,19 +8,12 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-
-<%= flash[:errors].join('<br>').html_safe if flash[:errors] %>
-
-<% if signed_in? %>
-  <%= current_user.email %>
-  <%= button_to 'Sign Out', session_url, method: :delete %>
-<% else %>
-  <%= link_to 'Sign In', new_session_url %>
-	<%= link_to 'Sign Up', new_user_url %>
-<% end %>
-
-<%= yield %>
-
-</body>
+<div class='container'>
+	<div class='span12'>
+		<body>
+		<%= flash[:errors].join('<br>').html_safe if flash[:errors] %>
+		<%= yield %>
+	</body>
+	</div>
+</div>
 </html>
